@@ -18,7 +18,7 @@ app = Flask(__name__)
 def home():
 	return render_template('home.html')
 
-@app.route('/predict',methods=['POST'])
+@app.route('/resturantnlp.herokuapp.com/predict',methods=['POST'])
 def predict():
     # Importing the dataset
     dataset = pd.read_csv('Restaurant_Reviews.tsv', delimiter='\t', quoting=3)
