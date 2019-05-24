@@ -20,7 +20,7 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 # Splitting the dataset into the Training set and Test set
 from sklearn.model_selection import train_test_split
-
+dfbc
 
 app = Flask(__name__)
 
