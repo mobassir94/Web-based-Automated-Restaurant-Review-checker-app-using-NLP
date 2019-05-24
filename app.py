@@ -12,10 +12,14 @@ from sklearn.externals import joblib
 # Cleaning the texts
 import re
 import nltk
+# Creating the Bag of Words model
+from sklearn.feature_extraction.text import CountVectorizer
 
 nltk.download('stopwords')
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
+# Splitting the dataset into the Training set and Test set
+from sklearn.model_selection import train_test_split
 
 
 app = Flask(__name__)
@@ -41,15 +45,12 @@ def predict():
         review = ' '.join(review)
         corpus.append(review)
 
-        # Creating the Bag of Words model
-    from sklearn.feature_extraction.text import CountVectorizer
+     
     cv = CountVectorizer(max_features=1500)
     X = cv.fit_transform(corpus).toarray()
     y = dataset.iloc[:, 1].values
 
-    # Splitting the dataset into the Training set and Test set
-    from sklearn.model_selection import train_test_split
-
+   
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=0)
 
     # Fitting Naive Bayes to the Training set
