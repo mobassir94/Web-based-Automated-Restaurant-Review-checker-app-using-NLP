@@ -9,6 +9,13 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.externals import joblib
+# Cleaning the texts
+import re
+import nltk
+
+nltk.download('stopwords')
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
 
 
 app = Flask(__name__)
@@ -22,13 +29,7 @@ def predict():
     # Importing the dataset
     dataset = pd.read_csv('Restaurant_Reviews.tsv', delimiter='\t', quoting=3)
 
-    # Cleaning the texts
-    import re
-    import nltk
-
-    nltk.download('stopwords')
-    from nltk.corpus import stopwords
-    from nltk.stem.porter import PorterStemmer
+    
 
     corpus = []
     for i in range(0, 1000):
