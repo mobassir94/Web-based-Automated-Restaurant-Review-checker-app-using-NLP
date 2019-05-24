@@ -18,7 +18,7 @@ app = Flask(__name__)
 def home():
 	return render_template('home.html')
 
-@app.route('https://resturantnlp.herokuapp.com/predict',methods=['POST'])
+@app.route('/predict',methods=['POST'])
 def predict():
     # Importing the dataset
     dataset = pd.read_csv('Restaurant_Reviews.tsv', delimiter='\t', quoting=3)
@@ -76,6 +76,6 @@ def predict():
     return render_template('result.html', prediction=my_prediction)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, port=33507)
 
 
